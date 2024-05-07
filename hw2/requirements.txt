@@ -1,0 +1,5 @@
+scrapy >= 2.9.0
+pandas >= 1.5.3
+jupyter >= 1.0.0
+boto3 >= 1.34.99
+scikit-learn >= 1.2.2
