@@ -128,6 +128,8 @@ def join_with_US_gender(spark: SparkSession, data: DataFrame):
 
     return data.join(us_df, data.marital_status == us_df.marital_status_statistics, 'outer')
 
+
+
 def main():
     # Create a Spark session
     spark = SparkSession.builder \
@@ -142,6 +144,9 @@ def main():
     data = join_with_US_gender(spark, data)
 
     data.show(5)
+
+    # Save the final DataFrame to a CSV file in the ./data folder
+    data.write.csv('./data/final_data.csv', header=True, mode='overwrite')
 
     spark.stop()
 
