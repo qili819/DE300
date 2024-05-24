@@ -18,10 +18,25 @@ import os
 import sys
 sys.executable
 
-
+DATA_FOLDER = "data"
 NUMBER_OF_FOLDS = 5
 SPLIT_SEED = 7576
 TRAIN_TEST_SPLIT = 0.9
+
+def read_data(spark: SparkSession) -> DataFrame:
+    """
+    read data; since the data has the header we let spark guess the schema
+    """
+    
+    # Read the hd CSV data into a DataFrame
+    hd_data = spark.read \
+        .format("csv") \
+        .option("header", "true") \
+        .option("inferSchema", "true") \
+        .load(os.path.join(DATA_FOLDER,"*.csv"))
+
+    return hd_data
+
 
 ###### Transformer Class ######
 class DataCleaner(Transformer):
@@ -133,15 +148,15 @@ def pipeline(data: DataFrame):
 
 
 ###### Main Class ######
-if __name__ == "__main__":
+def main():
     # Create a Spark session
     spark = SparkSession.builder \
         .appName("Predict Heart Disease") \
         .getOrCreate()
 
-    data = spark.read.csv("s3a://de300spring2024/cheryl_chen/hw3/all_locs.csv", header = True)
+    data = read_data(spark)
     pipeline(data)
-    print("Best model selected.")
 
     spark.stop()
-    
+
+main()
