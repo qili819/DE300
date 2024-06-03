@@ -1,4 +1,4 @@
-hw4 files in S3 bucket de300spring2024: 
+hw4 files in S3 bucket de300spring2024:  
 /cheryl_chen/hw4/
 ├── dags/
 │   ├── eda_workflow.py: contains the Airflow DAG definition
