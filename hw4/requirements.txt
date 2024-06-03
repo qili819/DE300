@@ -1,0 +1,10 @@
+# Core dependencies
+apache-airflow[amazon]==2.8.1
+boto3
+pandas
+scikit-learn
+pyspark==3.2.1
+
+# Additional dependencies
+numpy
+

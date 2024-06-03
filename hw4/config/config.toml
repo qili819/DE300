@@ -1,0 +1,21 @@
+[aws]
+region = "us-east-2"
+s3_bucket = "de300spring2024"
+data_key = "cheryl_chen/hw4/all_locs.csv"
+output_path = "/tmp/"
+
+[database]
+host = "cheryl-dbins.cvwhaidrmrqj.us-east-2.rds.amazonaws.com"
+port = 5432
+user = "postgres"
+password = "12341234"
+dbname = "hw4"
+
+[airflow]
+dags_folder = "/opt/airflow/dags"
+scripts_folder = "/opt/airflow/scripts"
+config_folder = "/opt/airflow/config"
+
+[spark]
+master = "local[*]"
+app_name = "Airflow Spark Application"
